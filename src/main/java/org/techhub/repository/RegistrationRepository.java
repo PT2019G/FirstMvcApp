@@ -67,15 +67,15 @@ public class RegistrationRepository {
 		return false;
 	}
 
-	public List<Register> getDetails(String username) {
-		List<Register> ls=new ArrayList<Register>();
+	public Register getDetails(String username) {
+		Register r = new Register();
 		try {
 			stmt = con.prepareStatement("select * from registration where username=?");
 			stmt.setString(1, username);
 			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
-				Register r = new Register();
+				
 				r.setId(rs.getInt(1));
 				r.setName(rs.getString(2));
 				r.setEmail(rs.getString(3));
@@ -83,13 +83,12 @@ public class RegistrationRepository {
 				r.setAddress(rs.getString(5));
 //				r.setPhoto(rs.getBlob(6));
 				r.setUsername(rs.getString(7));
-				ls.add(r);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return ls;
+		return r;
 	}
 
 	public Blob getPhotoById(int id) {

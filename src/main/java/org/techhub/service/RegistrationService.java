@@ -10,6 +10,6 @@ import org.techhub.model.Register;
 public interface RegistrationService {
 	
 	public boolean saveRegistrationData(Register register,MultipartFile photo);
-	List<Register> getDetails(String username);
+	Register getDetails(String username);
 
 }

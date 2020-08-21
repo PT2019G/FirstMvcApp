@@ -21,7 +21,7 @@
 	style='width: 400px; height: 30px' /><br><br> 
 	 Address:  <input type='text' name='address' value=''
 	style='width: 400px; height: 30px' /><br><br> 
-	Photo: <input type="file" name="photo"><br><br> 
+	Upload Photo: <input type="file" name="photo"><br><br> 
 	Username: <input type='text' name='username' value=''
 			style='width: 400px; height: 30px' /><br><br>
 	 Password:   <input type='password' name='password' value=''

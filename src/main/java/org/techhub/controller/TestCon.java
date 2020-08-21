@@ -3,7 +3,6 @@ package org.techhub.controller;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.sql.Blob;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -37,8 +36,8 @@ public class TestCon {
 	public String submitLogin(@ModelAttribute Login login,Map map) {
 		System.out.println("Username=" + login.getUsername());
 		
-		boolean validateUsernameAndPassword = registrationService.validateUsernameAndPassword(login);
-		if(validateUsernameAndPassword) {
+		boolean isUserAvailable= registrationService.validateUsernameAndPassword(login);
+		if(isUserAvailable) {
 			map.put("username", login.getUsername());
 			return "welcome";
 		}
@@ -72,17 +71,14 @@ public class TestCon {
 	}
 
 	@RequestMapping(value = "/viewDetails/{username}", method = RequestMethod.GET)
-	public String viewDetails(@PathVariable("username") String username,Map map) {
-		List<Register> details = registrationService.getDetails(username);
-		map.put("regList", details);
-		for (Register register : details) {
-			System.out.println(register.getName());
-		}
-		return "profile";
+	public String viewDetails(@PathVariable("username") String un,Map map) {
+		Register userDetails = registrationService.getDetails(un);
+		map.put("u",userDetails );
+		return "welcome";
 	}
 	
-	@RequestMapping(value = "/getStudentPhoto/{id}")
-	public void getStudentPhoto(HttpServletResponse response, @PathVariable("id") int id) throws Exception {
+	@RequestMapping(value = "/getProfilePhoto/{id}",method = RequestMethod.GET)
+	public void getProfilePhoto(HttpServletResponse response, @PathVariable("id") int id) throws Exception {
 		response.setContentType("image/jpeg");
 
 		Blob ph = registrationService.getPhotoById(id);

@@ -23,19 +23,20 @@ public class RegistrationServiceImpl implements RegistrationService{
 	}
 
 	@Override
-	public List<Register> getDetails(String username) {
+	public Register getDetails(String username) {
 		// TODO Auto-generated method stub
-		List<Register> ls=registrationRepository.getDetails(username);
-		return ls;
+		Register r=registrationRepository.getDetails(username);
+		return r;
 	}
 
 	public Blob getPhotoById(int id) {
-		// TODO Auto-generated method stub
-		return registrationRepository.getPhotoById(id);
+		Blob photo=registrationRepository.getPhotoById(id);;
+		return photo;
 	}
 
 	public boolean validateUsernameAndPassword(Login login) {
-		return registrationRepository.validateUsernameAndPassword(login);
+		boolean b=registrationRepository.validateUsernameAndPassword(login);
+		return b;
 		
 	}
 
